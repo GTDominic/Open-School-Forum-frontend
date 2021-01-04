@@ -19,7 +19,8 @@ export class AppComponent {
     FirstName: 'b',
     LastName: 'b',
     Email: 'b',
-    Password: 'b'
+    Password: 'b',
+    Ranks: ['Lehrer', 'Mathe', 'Chemie']
   };
 
   data: any;

@@ -45,4 +45,5 @@ export interface User {
   LastName: string;
   Email: string;
   Password: string;
+  Ranks: Array<string>;
 }
