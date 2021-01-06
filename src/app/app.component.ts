@@ -1,3 +1,5 @@
+import { UserserviceService } from './userservice.service';
+import { User } from './userservice.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +9,28 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'open-school-forum';
+
+  constructor(
+    private userservice: UserserviceService
+  ) {}
+
+  emptyvar: User = {
+    Username: 'b',
+    FirstName: 'b',
+    LastName: 'b',
+    Email: 'b',
+    Password: 'b',
+    Ranks: ['Lehrer', 'Mathe', 'Chemie']
+  };
+
+  data: any;
+
+  registering() {
+    this.userservice.register(this.emptyvar)
+      .subscribe(
+        data => {
+          this.data = data;
+        }
+      );
+  }
 }
