@@ -4,4 +4,4 @@
 
 <button (click)="registering()">Test</button>
 
-<div>{{data}}</div>
+<div *ngIf="data">{{data.message}}</div>

@@ -11,20 +11,20 @@ const baseUrl = config.ServerUrl + '/user/';
 })
 export class UserserviceService {
 
+  constructor(private http: HttpClient) {}
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   };
 
-  constructor(private http: HttpClient) {}
-
   register(user: User): Observable<User> {
-    return this.http.post<User>(baseUrl + 'register', user, this.httpOptions).pipe(
-      tap((newUser: User) => console.log(`added user w/ id=${newUser.Username}`)),
-      catchError(this.handleError<User>('addUser'))
+     return this.http.post<User>(baseUrl + 'register', user, this.httpOptions).pipe(
+      catchError(this.registerError<User>('addUser'))
     );
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
+  // Angular Error handler
+  private registerError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
