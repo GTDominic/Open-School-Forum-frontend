@@ -17,6 +17,8 @@ export class UserserviceService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   };
 
+  public errorMessage: any;
+
   getRanks() {
     return this.http.get(baseUrl + 'ranks').pipe(
       catchError(this.generalError('get_ranks'))
@@ -24,8 +26,10 @@ export class UserserviceService {
   }
 
   register(user: User): Observable<User> {
-     return this.http.post<User>(baseUrl + 'user/register', user, this.httpOptions).pipe(
-      catchError(this.registerError<User>('addUser'))
+    this.errorMessage = null;
+    return this.http.post<User>(baseUrl + 'user/register', user, this.httpOptions)
+      .pipe(
+        catchError(this.registerError<User>('addUser'))
     );
   }
 
@@ -52,6 +56,8 @@ export class UserserviceService {
 
       // TODO: better job of transforming error for user consumption
       console.log(`${operation} failed: ${error.message}`);
+
+      this.errorMessage = error.error.message;
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

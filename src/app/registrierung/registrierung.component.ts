@@ -1,9 +1,7 @@
 import { UserserviceService } from './../userservice.service';
-import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import {ErrorStateMatcher} from '@angular/material/core';
 import { User } from '../userservice.service';
-import { from } from 'rxjs';
 
 @Component({
   selector: 'app-registrierung',
@@ -12,7 +10,7 @@ import { from } from 'rxjs';
 })
 export class RegistrierungComponent implements OnInit {
   constructor(
-    private userservice: UserserviceService
+    public userservice: UserserviceService
   ) { }
 
   regForm = new FormGroup({
@@ -34,6 +32,8 @@ export class RegistrierungComponent implements OnInit {
 
   ranks: any;
 
+  data: any;
+
   ngOnInit() {
     this.userservice.getRanks()
       .subscribe(
@@ -44,8 +44,21 @@ export class RegistrierungComponent implements OnInit {
   }
 
   onRegSubmit(): void {
-    // ! wird auch bei Fehlern submitted
-    console.log(this.regForm.value);
+    this.data = null;
+    if ( this.regForm.valid === true ) {
+      this.Usermodel.Username = this.regForm.get('Username').value;
+      this.Usermodel.FirstName = this.regForm.get('FirstName').value;
+      this.Usermodel.LastName = this.regForm.get('LastName').value;
+      this.Usermodel.Email = this.regForm.get('Email').value;
+      this.Usermodel.Password = this.regForm.get('Password').value;
+      this.userservice.register(this.Usermodel)
+      .subscribe(
+        data => {
+          this.data = data;
+        }
+      );
+    } else {
+    }
   }
 
 }

@@ -2,22 +2,33 @@
   <mat-form-field>
     <mat-label>Nutzername</mat-label>
     <input matInput formControlName="Username" placeholder="Muster_man_38">
+    <mat-error *ngIf="regForm.get('Username').hasError('required')">Feld notwendig!</mat-error>
+    <mat-error *ngIf="regForm.get('Username').hasError('minlength')">Nutzername muss mindestens 4 Zeichen lang sein.</mat-error>
   </mat-form-field><br>
   <mat-form-field>
     <mat-label>Vorname</mat-label>
     <input matInput formControlName="FirstName" placeholder="Max">
+    <mat-error *ngIf="regForm.get('FirstName').hasError('required')">Feld notwendig!</mat-error>
   </mat-form-field><br>
   <mat-form-field>
     <mat-label>Nachname</mat-label>
     <input matInput formControlName="LastName" placeholder="Mustermann">
+    <mat-error *ngIf="regForm.get('LastName').hasError('required')">Feld notwendig!</mat-error>
   </mat-form-field><br>
   <mat-form-field>
     <mat-label>Email</mat-label>
     <input type="email" matInput formControlName="Email" placeholder="max.mustermann@example.com">
+    <mat-error *ngIf="regForm.get('Email').hasError('required')">Feld notwendig!</mat-error>
+    <mat-error *ngIf="regForm.get('Email').hasError('email')">Bitte korrekte Email-Adresse angeben!</mat-error>
   </mat-form-field><br>
   <mat-form-field>
     <mat-label>Passwort</mat-label>
     <input type="password" matInput formControlName="Password">
+    <mat-error *ngIf="regForm.get('Password').hasError('required')">Feld notwendig!</mat-error>
+    <mat-error *ngIf="regForm.get('Password').hasError('minlength')">Passwort muss mindestens 6 Zeichen lang sein.</mat-error>
   </mat-form-field><br>
+  <!-- ToDo: Ränge bei Registrierung (Verschoben auf wenn Zeit ist) -->
     <button type="submit" mat-raised-button color="primary">Submit</button>
 </form>
+<div *ngIf="data">{{data.message}}</div>
+<div *ngIf="userservice.errorMessage">{{userservice.errorMessage}}</div>
