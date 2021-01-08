@@ -1,12 +1,40 @@
 <form>
   <mat-form-field>
+    <mat-label>Nutzername</mat-label>
+    <input matInput [formControl]="UsernameFormControl" [(ngModel)]="Usermodel.Username" placeholder="Muster_man_38">
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Nutzername ist <strong>notwendig!</strong>
+    </mat-error>
+  </mat-form-field><br>
+  <mat-form-field>
+    <mat-label>Vorname</mat-label>
+    <input matInput [formControl]="FirstNameFormControl" [(ngModel)]="Usermodel.FirstName" placeholder="Max">
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Vorname ist <strong>notwendig!</strong>
+    </mat-error>
+  </mat-form-field><br>
+  <mat-form-field>
+    <mat-label>Nachname</mat-label>
+    <input matInput [formControl]="LastNameFormControl" [(ngModel)]="Usermodel.LastName" placeholder="Mustermann">
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Nachname ist <strong>notwendig!</strong>
+    </mat-error>
+  </mat-form-field><br>
+  <mat-form-field>
     <mat-label>Email</mat-label>
-    <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher" placeholder="max.mustermann@example.com">
+    <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher" [(ngModel)]="Usermodel.Email" placeholder="max.mustermann@example.com">
     <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
       Bitte eine gültige Email Adresse angeben!
     </mat-error>
     <mat-error *ngIf="emailFormControl.hasError('required')">
       Email ist <strong>notwendig!</strong>
+    </mat-error>
+  </mat-form-field><br>
+  <mat-form-field>
+    <mat-label>Passwort</mat-label>
+    <input type="password" matInput [formControl]="PasswordFormControl" [(ngModel)]="Usermodel.Password">
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Passwort ist <strong>notwendig!</strong>
     </mat-error>
   </mat-form-field>
 </form>
