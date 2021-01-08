@@ -1,1 +1,12 @@
-<p>registrierung works!</p>
+<form>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher" placeholder="max.mustermann@example.com">
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Bitte eine gültige Email Adresse angeben!
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email ist <strong>notwendig!</strong>
+    </mat-error>
+  </mat-form-field>
+</form>
