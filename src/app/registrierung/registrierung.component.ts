@@ -1,3 +1,4 @@
+import { UserserviceService } from './../userservice.service';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import {ErrorStateMatcher} from '@angular/material/core';
@@ -9,6 +10,10 @@ import { User } from '../userservice.service';
   styleUrls: ['./registrierung.component.css']
 })
 export class RegistrierungComponent implements OnInit {
+  constructor(
+    private userservice: UserserviceService
+  ) { }
+
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -32,14 +37,15 @@ export class RegistrierungComponent implements OnInit {
     LastName: '',
     Email: '',
     Password: '',
-    Ranks: ['']
+    Ranks: []
   };
+
+  ranks: any;
 
   matcher = new MyErrorStateMatcher();
 
-  constructor() { }
-
   ngOnInit() {
+    this.ranks = this.userservice.getRanks();
   }
 
 }
