@@ -1,8 +1,9 @@
 import { UserserviceService } from './../userservice.service';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { User } from '../userservice.service';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-registrierung',
@@ -14,22 +15,13 @@ export class RegistrierungComponent implements OnInit {
     private userservice: UserserviceService
   ) { }
 
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
-  UsernameFormControl = new FormControl('', [
-    Validators.required
-  ]);
-  FirstNameFormControl = new FormControl('', [
-    Validators.required
-  ]);
-  LastNameFormControl = new FormControl('', [
-    Validators.required
-  ]);
-  PasswordFormControl = new FormControl('', [
-    Validators.required
-  ]);
+  regForm = new FormGroup({
+    Username: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    FirstName: new FormControl('', Validators.required),
+    LastName: new FormControl('', Validators.required),
+    Email: new FormControl('', [Validators.email, Validators.required]),
+    Password: new FormControl('', [Validators.required, Validators.minLength(6)])
+  });
 
   Usermodel: User = {
     Username: '',
@@ -42,18 +34,18 @@ export class RegistrierungComponent implements OnInit {
 
   ranks: any;
 
-  matcher = new MyErrorStateMatcher();
-
   ngOnInit() {
-    this.ranks = this.userservice.getRanks();
+    this.userservice.getRanks()
+      .subscribe(
+        data => {
+          this.ranks = data;
+        }
+      );
   }
 
-}
-
-/** Error when invalid control is dirty, touched, or submitted. */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  onRegSubmit(): void {
+    // ! wird auch bei Fehlern submitted
+    console.log(this.regForm.value);
   }
+
 }

@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 const config = require('./config.json');
 
-const baseUrl = config.ServerUrl + '/user/';
+const baseUrl = config.ServerUrl + '/';
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +18,13 @@ export class UserserviceService {
   };
 
   getRanks() {
-    return this.http.get(baseUrl + 'ranks', this.httpOptions).pipe(
+    return this.http.get(baseUrl + 'ranks').pipe(
       catchError(this.generalError('get_ranks'))
     );
   }
 
   register(user: User): Observable<User> {
-     return this.http.post<User>(baseUrl + 'register', user, this.httpOptions).pipe(
+     return this.http.post<User>(baseUrl + 'user/register', user, this.httpOptions).pipe(
       catchError(this.registerError<User>('addUser'))
     );
   }
