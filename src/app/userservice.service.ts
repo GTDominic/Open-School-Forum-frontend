@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { catchError } from 'rxjs/operators';
+import * as moment from 'moment';
+
 const config = require('./config.json');
 
 const baseUrl = config.ServerUrl + '/';
@@ -36,7 +37,7 @@ export class UserserviceService {
     );
   }
 
-  signhttpin(user: SUser): Observable<SUser> {
+  private signhttpin(user: SUser): Observable<SUser> {
     return this.http.post<SUser>(baseUrl + 'user/signin', user, this.httpOptions)
       .pipe(
         catchError(this.generalError<SUser>('signin'))
@@ -51,9 +52,36 @@ export class UserserviceService {
     this.signhttpin(this.Usersign)
       .subscribe(
         data => {
-          console.log(data);
+          this.setSession(data);
         }
       );
+  }
+
+  logout() {
+    console.log('logging out');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
+  }
+
+  private setSession(authResult) {
+    const expiresAt = moment().add(authResult.expiresIn, 'second');
+
+    localStorage.setItem('id_token', authResult.accessToken);
+    localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+  }
+
+  public isLoggedIn() {
+    return moment().isBefore(this.getExpiration());
+  }
+
+  isLoggedOut() {
+    return !this.isLoggedIn();
+  }
+
+  getExpiration() {
+    const expiration = localStorage.getItem('expires_at');
+    const expiresAt = JSON.parse(expiration);
+    return moment(expiresAt);
   }
 
   private generalError<T>(operation = 'operation', result?: T) {
