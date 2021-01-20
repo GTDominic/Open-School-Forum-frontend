@@ -57,7 +57,6 @@ export class RegistrierungComponent implements OnInit {
           this.data = data;
         }
       );
-    } else {
     }
   }
 
