@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 const config = require('./config.json');
 
 const baseUrl = config.ServerUrl + '/';
@@ -11,13 +12,15 @@ const baseUrl = config.ServerUrl + '/';
 })
 export class UserserviceService {
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient) {}
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   };
 
   public errorMessage: any;
+  Usersign: any;
 
   getRanks() {
     return this.http.get(baseUrl + 'ranks').pipe(
@@ -31,6 +34,26 @@ export class UserserviceService {
       .pipe(
         catchError(this.registerError<User>('addUser'))
     );
+  }
+
+  signhttpin(user: SUser): Observable<SUser> {
+    return this.http.post<SUser>(baseUrl + 'user/signin', user, this.httpOptions)
+      .pipe(
+        catchError(this.generalError<SUser>('signin'))
+      );
+  }
+
+  signin(UsernameEmailIn, PasswordIn) {
+    this.Usersign = {
+      UsernameEmail: UsernameEmailIn,
+      Password: PasswordIn
+    };
+    this.signhttpin(this.Usersign)
+      .subscribe(
+        data => {
+          console.log(data);
+        }
+      );
   }
 
   private generalError<T>(operation = 'operation', result?: T) {
@@ -72,4 +95,9 @@ export interface User {
   Email: string;
   Password: string;
   Ranks: Array<string>;
+}
+
+interface SUser {
+  UsernameEmail: string;
+  Password: string;
 }

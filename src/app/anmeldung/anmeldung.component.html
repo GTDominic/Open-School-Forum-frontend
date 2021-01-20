@@ -1,1 +1,13 @@
-<p>anmeldung works!</p>
+<form [formGroup]="anmForm" (ngSubmit)="onAnmSubmit()">
+  <mat-form-field>
+    <mat-label>Nutzername oder Email</mat-label>
+    <input matInput formControlName="UsernameEmail">
+    <mat-error *ngIf="anmForm.get('UsernameEmail').hasError('required')">Nutzername notwendig!</mat-error>
+  </mat-form-field><br>
+  <mat-form-field>
+    <mat-label>Passwort</mat-label>
+    <input type="password" matInput formControlName="Password">
+    <mat-error *ngIf="anmForm.get('Password').hasError('required')">Passwort notwendig!</mat-error>
+  </mat-form-field><br>
+  <button type="submit" mat-raised-button color="primary">Submit</button>
+</form>
