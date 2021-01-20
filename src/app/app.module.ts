@@ -9,12 +9,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu/menu.component';
 import { RegistrierungComponent } from './registrierung/registrierung.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AnmeldungComponent } from './anmeldung/anmeldung.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    RegistrierungComponent
+    RegistrierungComponent,
+    AnmeldungComponent
   ],
   imports: [
     BrowserModule,
