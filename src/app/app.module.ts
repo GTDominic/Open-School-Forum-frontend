@@ -10,13 +10,19 @@ import { MenuComponent } from './menu/menu.component';
 import { RegistrierungComponent } from './registrierung/registrierung.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AnmeldungComponent } from './anmeldung/anmeldung.component';
+import { NewthreadComponent } from './newthread/newthread.component';
+import { ThreadlistComponent } from './threadlist/threadlist.component';
+import { DeletethreadComponent } from './deletethread/deletethread.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     RegistrierungComponent,
-    AnmeldungComponent
+    AnmeldungComponent,
+    NewthreadComponent,
+    ThreadlistComponent,
+    DeletethreadComponent
   ],
   imports: [
     BrowserModule,
