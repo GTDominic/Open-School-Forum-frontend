@@ -1,4 +1,7 @@
+import { ThreadserviceService } from './../threadservice.service';
 import { Component, OnInit } from '@angular/core';
+import { constants } from 'os';
+import { subscribeOn } from 'rxjs/operators';
 
 @Component({
   selector: 'app-threadlist',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ThreadlistComponent implements OnInit {
 
-  constructor() { }
+  constructor(public threadservice: ThreadserviceService) {}
+
+  threads: any;
 
   ngOnInit() {
+    this.threadservice.getThreads()
+    .subscribe(
+      data => {
+        this.threads = data;
+      }
+    );
   }
 
 }
