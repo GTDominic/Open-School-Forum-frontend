@@ -15,9 +15,20 @@ export class ThreadserviceService {
   constructor(
     private http: HttpClient) {}
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
-  };
+  createThread(titel) {
+    const idToken = localStorage.getItem('id_token');
+    const httpOptions = {
+      headers: new HttpHeaders(
+        { 'Content-Type': 'application/json',
+        'access-token': idToken }
+      )
+    };
+    const NewThread = {title: titel};
+    return this.http.post(baseUrl + 'threads/new', NewThread, httpOptions)
+    .pipe(
+      catchError(this.generalError('newthread'))
+    );
+  }
 
   getThreads() {
     return this.http.get(baseUrl + 'threads').pipe(
