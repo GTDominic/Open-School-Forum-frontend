@@ -13,6 +13,7 @@ import { AnmeldungComponent } from './anmeldung/anmeldung.component';
 import { NewthreadComponent } from './newthread/newthread.component';
 import { ThreadlistComponent } from './threadlist/threadlist.component';
 import { DeletethreadComponent } from './deletethread/deletethread.component';
+import { ThreadComponent } from './thread/thread.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DeletethreadComponent } from './deletethread/deletethread.component';
     AnmeldungComponent,
     NewthreadComponent,
     ThreadlistComponent,
-    DeletethreadComponent
+    DeletethreadComponent,
+    ThreadComponent
   ],
   imports: [
     BrowserModule,
