@@ -19,7 +19,9 @@ export class NewthreadComponent implements OnInit {
   }
 
   onThreadSubmit(): void {
-    if ( this.ThreadForm.valid === true ) {}
+    if ( this.ThreadForm.valid === true ) {
+      this.threadservice.createThread(this.ThreadForm.get('Titel').value);
+    }
   }
 
 }
