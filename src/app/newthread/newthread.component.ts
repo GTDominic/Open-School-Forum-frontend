@@ -1,3 +1,5 @@
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ThreadserviceService } from './../threadservice.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewthreadComponent implements OnInit {
 
-  constructor() { }
+  constructor(public threadservice: ThreadserviceService) { }
+
+  ThreadForm = new FormGroup({
+    Titel: new FormControl('', [Validators.required, Validators.minLength(4)])
+  });
 
   ngOnInit() {
+  }
+
+  onThreadSubmit(): void {
+    if ( this.ThreadForm.valid === true ) {}
   }
 
 }
