@@ -20,7 +20,12 @@ export class NewthreadComponent implements OnInit {
 
   onThreadSubmit(): void {
     if ( this.ThreadForm.valid === true ) {
-      this.threadservice.createThread(this.ThreadForm.get('Titel').value);
+      this.threadservice.createThread(this.ThreadForm.get('Titel').value)
+      .subscribe(
+        data => {
+          console.log(data);
+        }
+      );
     }
   }
 
