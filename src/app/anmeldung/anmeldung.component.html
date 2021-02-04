@@ -12,9 +12,4 @@
     </mat-form-field><br>
     <button color="primary" type="submit" mat-raised-button>Submit</button>
   </form>
-
-  <div *ngIf="userservice.isLoggedIn()">Angemeldet</div>
-  <div *ngIf="userservice.isLoggedOut()">Nicht Angemeldet</div>
-
-  <button mat-raised-button color="secondary" (click)="userservice.logout()">Abmelden</button>
 </div> 
