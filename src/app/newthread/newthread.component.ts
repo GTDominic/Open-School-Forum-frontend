@@ -12,7 +12,8 @@ export class NewthreadComponent implements OnInit {
   constructor(public threadservice: ThreadserviceService) { }
 
   ThreadForm = new FormGroup({
-    Titel: new FormControl('', [Validators.required, Validators.minLength(4)])
+    Titel: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    Post: new FormControl('', [Validators.required, Validators.minLength(20)])
   });
 
   ngOnInit() {
