@@ -1,9 +1,11 @@
-<form [formGroup]="ThreadForm" (ngSubmit)="onThreadSubmit()">
-  <mat-form-field>
-    <mat-label>Titel</mat-label>
-    <input color="primary" matInput formControlName="Titel" placeholder="Problem xyz">
-    <mat-error *ngIf="ThreadForm.get('Titel').hasError('required')">Feld notwendig</mat-error>
-    <mat-error *ngIf="ThreadForm.get('Titel').hasError('minLength')">Titel muss mindestens 4 Zeichen lang sein</mat-error>
-  </mat-form-field>
-  <button color="primary" type="submit" mat-raised-button>Submit</button>
-</form>
+<div class="text">
+  <form [formGroup]="ThreadForm" (ngSubmit)="onThreadSubmit()">
+    <mat-form-field>
+      <mat-label>Titel</mat-label>
+      <input color="primary" matInput formControlName="Titel" placeholder="Problem xyz">
+      <mat-error *ngIf="ThreadForm.get('Titel').hasError('required')">Feld notwendig</mat-error>
+      <mat-error *ngIf="ThreadForm.get('Titel').hasError('minLength')">Titel muss mindestens 4 Zeichen lang sein</mat-error>
+    </mat-form-field><br>
+    <button color="primary" type="submit" mat-raised-button>Submit</button>
+  </form>
+</div>
