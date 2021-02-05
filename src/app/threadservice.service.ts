@@ -29,6 +29,13 @@ export class ThreadserviceService {
     );
   }
 
+  getThreadWtihPosts(id) {
+    return this.http.get(baseUrl + 'posts/' + id)
+    .pipe(
+      catchError(this.generalError('posts'))
+    );
+  }
+
   getThreads() {
     return this.http.get(baseUrl + 'threads').pipe(
       catchError(this.generalError('threads'))
