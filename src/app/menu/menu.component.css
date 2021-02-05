@@ -7,3 +7,6 @@ input {
     margin-left: 1em;
     width: 30em;
 }
+#tool {
+    align-items: right;
+} 
