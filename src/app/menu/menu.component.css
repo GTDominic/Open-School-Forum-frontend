@@ -1,12 +1,12 @@
 
 button {
-    margin-left: 1em;
+    margin-right: 1em;
 }
 
 input {
-    margin-left: 1em;
     width: 30em;
 }
-#tool {
-    align-items: right;
+.right {
+    margin-left: auto;
+    margin-right: 0;
 } 
