@@ -21,7 +21,12 @@ export class NewthreadComponent implements OnInit {
 
   onThreadSubmit(): void {
     if ( this.ThreadForm.valid === true ) {
-      this.threadservice.createThread(this.ThreadForm.get('Titel').value)
+      const NewThread = {
+        title: this.ThreadForm.get('Titel').value,
+        ptitle: '',
+        pmessage: this.ThreadForm.get('Post').value
+      }
+      this.threadservice.createThread(NewThread)
       .subscribe(
         data => {
           console.log(data);
