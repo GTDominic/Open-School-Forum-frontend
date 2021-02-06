@@ -57,6 +57,16 @@ export class UserserviceService {
       );
   }
 
+  getUserData() {
+    const idToken = localStorage.getItem('id_token');
+    return {
+      headers: new HttpHeaders(
+        { 'Content-Type': 'application/json',
+        'access-token': idToken }
+      )
+    };
+  }
+
   logout() {
     console.log('logging out');
     localStorage.removeItem('id_token');
