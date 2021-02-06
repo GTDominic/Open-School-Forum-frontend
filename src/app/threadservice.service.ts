@@ -30,7 +30,7 @@ export class ThreadserviceService {
   }
 
   getThreadWtihPosts(id) {
-    return this.http.get(baseUrl + 'posts/' + id)
+    return this.http.get(baseUrl + 'thread/' + id)
     .pipe(
       catchError(this.generalError('posts'))
     );

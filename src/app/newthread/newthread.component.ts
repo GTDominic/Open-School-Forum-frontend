@@ -25,7 +25,7 @@ export class NewthreadComponent implements OnInit {
         title: this.ThreadForm.get('Titel').value,
         ptitle: '',
         pmessage: this.ThreadForm.get('Post').value
-      }
+      };
       this.threadservice.createThread(NewThread)
       .subscribe(
         data => {
