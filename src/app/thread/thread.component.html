@@ -1,1 +1,7 @@
-<p>thread works!</p>
+<div *ngIf="threadData">
+  <h1> {{threadData.Titel}} </h1>
+  <div *ngFor="let post of threadData.posts">
+    <h2> {{post.Titel}} </h2>
+    <p> {{post.Message}} </p>
+  </div>
+</div>

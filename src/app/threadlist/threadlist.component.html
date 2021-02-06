@@ -1,3 +1,5 @@
-<li *ngFor="let thread of threads">
-  <a routerLink="/thread/{{thread.id}}"> {{thread.Titel}} </a>
-</li>
+<div *ngIf="threads">
+  <li *ngFor="let thread of threads">
+    <a routerLink="/thread/{{thread.id}}"> {{thread.Titel}} </a>
+  </li>
+</div>
