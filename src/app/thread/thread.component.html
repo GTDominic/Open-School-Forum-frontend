@@ -1,1 +1,23 @@
-<p>thread works!</p>
+<div *ngIf="threadData" class="text">
+  <h1> {{threadData.Titel}} </h1>
+  <div *ngFor="let post of threadData.posts">
+    <h2>{{post.Titel}}</h2>
+    <p id="Username"> {{userList[post.userId].Username}} </p>
+    <p id="Post">{{post.Message}}</p>
+  </div>
+  <div *ngIf="userservice.isLoggedIn()">
+    <form [formGroup]="NewPostForm" (ngSubmit)="onNewPostSubmit()">
+      <mat-form-field>
+        <mat-label>Titel</mat-label>
+        <input color="primary" matInput formControlName="Titel" placeholder="Problem xyz">
+      </mat-form-field><br>
+      <mat-form-field>
+        <textarea color="primary" matInput formControlName="Post" placeholder="Beschreibung"></textarea>
+        <mat-error *ngIf="NewPostForm.get('Post').hasError('required')">Feld notwendig</mat-error>
+        <mat-error *ngIf="NewPostForm.get('Post').hasError('minLength')">Titel muss mindestens 20 Zeichen lang sein</mat-error>
+      </mat-form-field><br>
+      <button color="primary" type="submit" mat-raised-button>Submit</button>
+    </form>
+  </div>
+</div>
+<h1 *ngIf="!threadData" class="text">Thema nicht gefunden!</h1>
