@@ -14,6 +14,7 @@ import { NewthreadComponent } from './newthread/newthread.component';
 import { ThreadlistComponent } from './threadlist/threadlist.component';
 import { DeletethreadComponent } from './deletethread/deletethread.component';
 import { ThreadComponent } from './thread/thread.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ThreadComponent } from './thread/thread.component';
     NewthreadComponent,
     ThreadlistComponent,
     DeletethreadComponent,
-    ThreadComponent
+    ThreadComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
