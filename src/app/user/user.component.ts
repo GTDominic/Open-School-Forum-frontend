@@ -19,6 +19,7 @@ export class UserComponent implements OnInit {
   userData: any;
 
   ngOnInit() {
+    this.fetchData();
   }
 
   fetchData() {

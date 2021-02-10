@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'threads/new', component: NewthreadComponent},
   { path: 'threads/list', component: ThreadlistComponent},
   { path: 'thread/:id', component: ThreadComponent},
-  { path: 'user/:uid', component: UserComponent}
+  { path: 'user/:id', component: UserComponent}
 ];
 
 @NgModule({
