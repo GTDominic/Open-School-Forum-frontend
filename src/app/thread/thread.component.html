@@ -2,7 +2,8 @@
   <h1> {{threadData.Titel}} </h1>
   <div *ngFor="let post of threadData.posts">
     <h2>{{post.Titel}}</h2>
-    <p style="white-space: pre;">{{post.Message}}</p>
+    <p id="Username"> {{userList[post.userId].Username}} </p>
+    <p id="Post">{{post.Message}}</p>
   </div>
   <div *ngIf="userservice.isLoggedIn()">
     <form [formGroup]="NewPostForm" (ngSubmit)="onNewPostSubmit()">

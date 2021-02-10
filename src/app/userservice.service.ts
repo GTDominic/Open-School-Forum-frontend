@@ -29,6 +29,12 @@ export class UserserviceService {
     );
   }
 
+  getUserList() {
+    return this.http.get(baseUrl + 'user').pipe(
+      catchError(this.generalError('getUserList'))
+    );
+  }
+
   register(user: User): Observable<User> {
     this.errorMessage = null;
     return this.http.post<User>(baseUrl + 'user/register', user, this.httpOptions)

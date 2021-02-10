@@ -23,6 +23,7 @@ export class ThreadComponent implements OnInit {
   });
 
   threadData: any;
+  userList: any;
 
   ngOnInit() {
     this.fetchData();
@@ -32,6 +33,10 @@ export class ThreadComponent implements OnInit {
     this.threadservice.getThreadWtihPosts(this.route.snapshot.params.id)
       .subscribe(data => {
         this.threadData = data;
+      });
+    this.userservice.getUserList()
+      .subscribe(data => {
+        this.userList = data;
       });
   }
 
