@@ -17,6 +17,7 @@ import { ThreadComponent } from './thread/thread.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { AgbComponent } from './agb/agb.component';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
+import { AgbbarComponent } from './agbbar/agbbar.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DatenschutzComponent } from './datenschutz/datenschutz.component';
     ThreadComponent,
     ImpressumComponent,
     AgbComponent,
-    DatenschutzComponent
+    DatenschutzComponent,
+    AgbbarComponent
   ],
   imports: [
     BrowserModule,
