@@ -1,0 +1,7 @@
+.PostsThreads {
+    display: flex;
+    flex-wrap: wrap;
+}
+#Threads {
+    margin-right: 2em;
+}

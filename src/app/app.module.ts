@@ -13,10 +13,12 @@ import { AnmeldungComponent } from './anmeldung/anmeldung.component';
 import { NewthreadComponent } from './newthread/newthread.component';
 import { ThreadlistComponent } from './threadlist/threadlist.component';
 import { DeletethreadComponent } from './deletethread/deletethread.component';
-import { ThreadComponent } from './thread/thread.component';
+import { ThreadComponent } from './thread/thread.component'
 import { ImpressumComponent } from './impressum/impressum.component';
 import { AgbComponent } from './agb/agb.component';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
+import { AgbbarComponent } from './agbbar/agbbar.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { DatenschutzComponent } from './datenschutz/datenschutz.component';
     ThreadComponent,
     ImpressumComponent,
     AgbComponent,
-    DatenschutzComponent
+    DatenschutzComponent,
+    AgbbarComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

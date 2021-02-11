@@ -1,0 +1,43 @@
+<div class="text">
+    <div *ngIf="userData">{{userData.Username}}</div>
+    <div class="PostsThreads">
+        <div id="Threads"  *ngIf="userThreads">
+            <p>Themen dieses Nutzers:</p>
+            <div *ngIf="userThreads[0]">
+                <table mat-table [dataSource]="userThreads" class="mat-elevation-z8">
+                    <ng-container matColumnDef="title">
+                        <th mat-header-cell *matHeaderCellDef> Titel </th>
+                        <td mat-cell *matCellDef="let thread"><a routerLink="/thread/{{thread.id}}" routerLinkActive="router-link-active" >{{thread.Titel}}</a></td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="threadsColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: threadsColumns;"></tr>
+                </table>
+            </div>
+            <div *ngIf="!userThreads[0]">
+                Der Nutzer hat noch keine Themen erstellt.
+            </div>
+        </div>
+        <div id="Posts">
+            <p>Nachrichten dieses Nutzers:</p>
+                <div *ngIf="userPosts[0]">
+                <table mat-table [dataSource]="userPosts" class="mat-elevation-z8">
+                    <ng-container matColumnDef="thread">
+                        <th mat-header-cell *matHeaderCellDef> Thread </th>
+                        <td mat-cell *matCellDef="let post"><a routerLink="/thread/{{post.threadId}}" routerLinkActive="router-link-active" >{{post.thread.Titel}}</a></td>
+                    </ng-container>
+                    <ng-container matColumnDef="title">
+                        <th mat-header-cell *matHeaderCellDef> Titel </th>
+                        <td mat-cell *matCellDef="let post">{{post.Titel}}</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="postsColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: postsColumns;"></tr>
+                </table>
+            </div>
+            <div *ngIf="!userPosts[0]">
+                Der Nutzer hat noch keine Nachrichten geschrieben.
+            </div>
+        </div>
+    </div>
+</div>

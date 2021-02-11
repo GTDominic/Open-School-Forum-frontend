@@ -1,8 +1,10 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="right" color="primary">
+  <div class="right">
     <input matInput type="search" id="suche" placeholder="Suchbegriff eingeben">
     <button mat-raised-button color="accent" [routerLink]="['/registrierung']" routerLinkActive="router-link-active" *ngIf="userservice.isLoggedOut()">Registrierung</button>
     <button mat-raised-button color="accent" [routerLink]="['/anmeldung']" routerLinkActive="router-link-active" *ngIf="userservice.isLoggedOut()">Anmelden</button>
     <button mat-raised-button color="accent" (click)="userservice.logout()" *ngIf="userservice.isLoggedIn()"> Logout </button>
+  </div>
 </mat-toolbar>
 <mat-toolbar color="primary">
   <button mat-raised-button color="accent" [routerLink]="['/threads/new']" routerLinkActive="router-link-active">Neues Thema erstellen</button>
