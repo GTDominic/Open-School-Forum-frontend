@@ -29,6 +29,12 @@ export class UserserviceService {
     );
   }
 
+  getUserList() {
+    return this.http.get(baseUrl + 'user').pipe(
+      catchError(this.generalError('getUserList'))
+    );
+  }
+
   register(user: User): Observable<User> {
     this.errorMessage = null;
     return this.http.post<User>(baseUrl + 'user/register', user, this.httpOptions)
@@ -55,6 +61,16 @@ export class UserserviceService {
           this.setSession(data);
         }
       );
+  }
+
+  getUserData() {
+    const idToken = localStorage.getItem('id_token');
+    return {
+      headers: new HttpHeaders(
+        { 'Content-Type': 'application/json',
+        'access-token': idToken }
+      )
+    };
   }
 
   logout() {
