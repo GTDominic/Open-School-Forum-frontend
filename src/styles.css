@@ -5,8 +5,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .text{
     margin-left: 1em;
-    margin-right: 1em;
-    display: flex;
+    display: block;
+    width: 90vw;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1em;
 }

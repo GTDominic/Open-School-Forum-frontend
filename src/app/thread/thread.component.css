@@ -1,3 +1,15 @@
 #post {
     white-space: pre;
 }
+input {
+    width: 80vw;
+}
+
+textarea{
+    height: 30em;
+    width: 80vw;
+}
+
+mat-form-field {
+    width: 80vw;
+}
