@@ -1,0 +1,12 @@
+
+button {
+    margin-right: 1em;
+}
+
+input {
+    width: 30em;
+}
+.right {
+    margin-left: auto;
+    margin-right: 0;
+} 
