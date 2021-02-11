@@ -50,7 +50,7 @@ export class UserserviceService {
   }
 
   getThreadsByUser(id) {
-    return this.http.get(baseUrl + 'thread/user/' + id)
+    return this.http.get(baseUrl + 'threads/user/' + id)
     .pipe(
       catchError(this.generalError('user'))
     );
