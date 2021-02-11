@@ -1,3 +1,4 @@
+import { UserserviceService } from './userservice.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
@@ -13,20 +14,27 @@ const baseUrl = config.ServerUrl + '/';
 export class ThreadserviceService {
 
   constructor(
-    private http: HttpClient) {}
+    private http: HttpClient,
+    private userservice: UserserviceService
+  ) {}
 
-  createThread(titel) {
-    const idToken = localStorage.getItem('id_token');
-    const httpOptions = {
-      headers: new HttpHeaders(
-        { 'Content-Type': 'application/json',
-        'access-token': idToken }
-      )
-    };
-    const NewThread = {title: titel};
-    return this.http.post(baseUrl + 'threads/new', NewThread, httpOptions)
+  createThread(NewThread) {
+    return this.http.post(baseUrl + 'threads/new', NewThread, this.userservice.getUserData())
     .pipe(
       catchError(this.generalError('newthread'))
+    );
+  }
+
+  newPost(NewPost, id) {
+    console.log(NewPost);
+    console.log(id);
+    return this.http.post(baseUrl + 'thread/' + id, NewPost, this.userservice.getUserData());
+  }
+
+  getThreadWtihPosts(id) {
+    return this.http.get(baseUrl + 'thread/' + id)
+    .pipe(
+      catchError(this.generalError('posts'))
     );
   }
 

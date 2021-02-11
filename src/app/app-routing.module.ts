@@ -8,6 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { AgbComponent } from './agb/agb.component';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
+import { UserComponent } from './user/user.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'thread/:id', component: ThreadComponent},
   { path: 'impressum', component: ImpressumComponent},
   { path: 'agb', component: AgbComponent},
-  { path: 'datenschutz', component: DatenschutzComponent}
+  { path: 'datenschutz', component: DatenschutzComponent},
+  { path: 'user/:id', component: UserComponent}
 ];
 
 @NgModule({
