@@ -17,6 +17,10 @@ export class UserComponent implements OnInit {
   ) { }
 
   userData: any;
+  userThreads: any;
+  userPosts: any;
+  threadsColumns: string[] = ['title'];
+  postsColumns: string[] = ['thread', 'title'];
 
   ngOnInit() {
     this.fetchData();
@@ -26,6 +30,15 @@ export class UserComponent implements OnInit {
     this.userservice.getUser(this.route.snapshot.params.id)
       .subscribe(data => {
         this.userData = data;
+      });
+    this.userservice.getThreadsByUser(this.route.snapshot.params.id)
+      .subscribe(data => {
+        this.userThreads = data;
+        console.log(data);
+      });
+    this.userservice.getPostsByUser(this.route.snapshot.params.id)
+      .subscribe(data => {
+        this.userPosts = data;
       });
   }
 
