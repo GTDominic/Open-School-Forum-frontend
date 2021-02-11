@@ -5,13 +5,13 @@
     <p id="Username"> {{userList[post.userId].Username}} </p>
     <p id="Post">{{post.Message}}</p>
   </div>
-  <div *ngIf="userservice.isLoggedIn()">
-    <form [formGroup]="NewPostForm" (ngSubmit)="onNewPostSubmit()">
-      <mat-form-field>
+  <div class="NewPostForm" *ngIf="userservice.isLoggedIn()">
+    <form class="NewPostForm" [formGroup]="NewPostForm" (ngSubmit)="onNewPostSubmit()">
+      <mat-form-field class="NewPostForm">
         <mat-label>Titel</mat-label>
         <input color="primary" matInput formControlName="Titel" placeholder="Problem xyz">
       </mat-form-field><br>
-      <mat-form-field>
+      <mat-form-field class="NewPostForm">
         <textarea color="primary" matInput formControlName="Post" placeholder="Beschreibung"></textarea>
         <mat-error *ngIf="NewPostForm.get('Post').hasError('required')">Feld notwendig</mat-error>
         <mat-error *ngIf="NewPostForm.get('Post').hasError('minLength')">Titel muss mindestens 20 Zeichen lang sein</mat-error>
