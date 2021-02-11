@@ -2,7 +2,7 @@
   <h1> {{threadData.Titel}} </h1>
   <div *ngFor="let post of threadData.posts">
     <h2>{{post.Titel}}</h2>
-    <p id="Username"> {{userList[post.userId].Username}} </p>
+    <a id="Username" routerLink="/user/{{post.userId}}" routerLinkActive="router-link-active" > {{userList[post.userId].Username}} </a>
     <p id="Post">{{post.Message}}</p>
   </div>
   <div *ngIf="userservice.isLoggedIn()">
