@@ -42,6 +42,20 @@ export class UserserviceService {
     );
   }
 
+  getPostsByUser(id) {
+    return this.http.get(baseUrl + 'thread/user/' + id)
+    .pipe(
+      catchError(this.generalError('user'))
+    );
+  }
+
+  getThreadsByUser(id) {
+    return this.http.get(baseUrl + 'thread/user/' + id)
+    .pipe(
+      catchError(this.generalError('user'))
+    );
+  }
+
   register(user: User): Observable<User> {
     this.errorMessage = null;
     return this.http.post<User>(baseUrl + 'user/register', user, this.httpOptions)
