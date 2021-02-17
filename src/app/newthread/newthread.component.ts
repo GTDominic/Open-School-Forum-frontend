@@ -35,8 +35,10 @@ export class NewthreadComponent implements OnInit {
       this.threadservice.createThread(NewThread)
       .subscribe(
         data => {
-          this.dat = data;
-          this.router.navigate([`thread/${this.dat.id}`]);
+          if (data) {
+            this.dat = data;
+            this.router.navigate([`thread/${this.dat.id}`]);
+          }
         }
       );
     }

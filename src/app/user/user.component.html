@@ -18,7 +18,7 @@
                 Der Nutzer hat noch keine Themen erstellt.
             </div>
         </div>
-        <div id="Posts">
+        <div id="Posts" *ngIf="userPosts">
             <p>Nachrichten dieses Nutzers:</p>
                 <div *ngIf="userPosts[0]">
                 <table mat-table [dataSource]="userPosts" class="mat-elevation-z8">
