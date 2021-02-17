@@ -28,6 +28,15 @@
       <mat-error *ngIf="regForm.get('Password').hasError('required')">Feld notwendig!</mat-error>
       <mat-error *ngIf="regForm.get('Password').hasError('minlength')">Passwort muss mindestens 6 Zeichen lang sein.</mat-error>
     </mat-form-field><br>
+      <mat-checkbox formControlName="Datenschutz">
+        Ich habe die
+        <a [routerLink]="['/datenschutz']" routerLinkActive="router-link-active" target="_blank">Datenschutzbestimmung</a>
+        gelesen und akzeptiere diese</mat-checkbox><br>
+      <mat-checkbox formControlName="AGB">
+        Ich habe die
+        <a [routerLink]="['/agb']" routerLinkActive="router-link-active" target="_blank">AGB</a>
+        gelesen und akzeptiere diese
+      </mat-checkbox><br>
     <!-- ToDo: Ränge bei Registrierung (Verschoben auf wenn Zeit ist) -->
       <button color="primary" type="submit" mat-raised-button>Submit</button>
   </form>
