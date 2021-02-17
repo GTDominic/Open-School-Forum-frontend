@@ -34,7 +34,6 @@ export class UserComponent implements OnInit {
     this.userservice.getThreadsByUser(this.route.snapshot.params.id)
       .subscribe(data => {
         this.userThreads = data;
-        console.log(data);
       });
     this.userservice.getPostsByUser(this.route.snapshot.params.id)
       .subscribe(data => {
