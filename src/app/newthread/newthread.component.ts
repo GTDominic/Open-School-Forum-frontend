@@ -37,7 +37,7 @@ export class NewthreadComponent implements OnInit {
         data => {
           if (data) {
             this.dat = data;
-            this.router.navigate([`thread/${this.dat.id}`]);
+            this.router.navigate([`thread/${this.dat.threadId}`]);
           }
         }
       );

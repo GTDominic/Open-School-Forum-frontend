@@ -26,8 +26,6 @@ export class ThreadserviceService {
   }
 
   newPost(NewPost, id) {
-    console.log(NewPost);
-    console.log(id);
     return this.http.post(baseUrl + 'thread/' + id, NewPost, this.userservice.getUserData());
   }
 
