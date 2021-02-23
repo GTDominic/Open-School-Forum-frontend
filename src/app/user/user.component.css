@@ -5,3 +5,7 @@
 #Threads {
     margin-right: 2em;
 }
+td.mat-cell {
+  padding-left: 1em;
+  padding-right: 1em;
+}

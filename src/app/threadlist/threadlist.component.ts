@@ -1,3 +1,4 @@
+import { UserserviceService } from './../userservice.service';
 import { ThreadserviceService } from './../threadservice.service';
 import { Component, OnInit } from '@angular/core';
 import { constants } from 'os';
@@ -10,9 +11,14 @@ import { subscribeOn } from 'rxjs/operators';
 })
 export class ThreadlistComponent implements OnInit {
 
-  constructor(public threadservice: ThreadserviceService) {}
+  constructor(
+    public threadservice: ThreadserviceService,
+    public userservice: UserserviceService
+  ) {}
 
   threads: any;
+  userList: any;
+  threadsColumns: string[] = ['title', 'user'];
 
   ngOnInit() {
     this.threadservice.getThreads()
@@ -21,6 +27,10 @@ export class ThreadlistComponent implements OnInit {
         this.threads = data;
       }
     );
+    this.userservice.getUserList()
+      .subscribe(data => {
+        this.userList = data;
+      });
   }
 
 }
